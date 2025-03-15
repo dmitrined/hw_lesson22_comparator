@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,30 +17,9 @@ public class Main {
         productList.add(new Product("iPhone 15", 1000, 4.8, 1050));
         productList.add(new Product("iPhone 16", 1499, 4.8, 900));
 
-        System.out.println("---sort By title----");
-        Collections.sort(productList, Product.comparatorByTitle());
-        print(productList);
-        System.out.println("---sort By price----");
-        Collections.sort(productList, Product.comparatorByPrice());
-        print(productList);
-        System.out.println("---sort By star rating----");
-        Collections.sort(productList, Product.comparatorByStarRating());
-        print(productList);
-        System.out.println("---sort By star rating reverse----");
-        Collections.sort(productList, Product.comparatorByStarRating().reversed());
-        print(productList);
-        System.out.println("---sort By amount----");
-        Collections.sort(productList, Product.comparatorByAmount());
-        print(productList);
-        System.out.println("---sort By star rating and price----");
-        Collections.sort(productList, Product.comparatorByStarRating().thenComparing(Product.comparatorByPrice()));
-        print(productList);
+        FromUserListSort sorter = new FromUserListSort(productList);
+        sorter.sortAndPrint();
 
     }
 
-    public static void print(List<Product> list) {
-        for (Product product : list) {
-            System.out.println(product);
-        }
-    }
 }
